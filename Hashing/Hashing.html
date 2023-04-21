@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/../index.css">
+  
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function md5(input) {
+      let hash = CryptoJS.MD5(input);
+      return hash.toString();
+    }
+       function sha256(input) {
+      let hash = CryptoJS.SHA256(input);
+      return hash.toString(CryptoJS.enc.Hex);
+    }
+
+    function sha512(input) {
+      let hash = CryptoJS.SHA512(input);
+      return hash.toString(CryptoJS.enc.Hex);
+    }
+  </script>
+ <!--HamBurger Icon-->
+<div class="bars" id="nav-action">
+  <span class="bar"> </span>
+</div>
+
+<!--Navbar Links-->
+<nav id="nav">
+  <ul>
+    <li class="shape-circle circle-one"><a href="/">Home</a></li>
+    <li class="shape-circle circle-two"><a href="/about/about.html">About</a></li>
+    <li class="shape-circle circle-three"><a href="/rot13/rot13.html">ROT13</a></li>
+    <li class="shape-circle circle-five">
+      <a href="/Hashing/Hashing.html">Hashing</a>
+    </li>
+  </ul>
+</nav>
+
+
+<!--Main Body Content-->
+<article class="containerenc">
+  <h1>Hashing</h1>
+  <p class="taglineenc"> Securing your data, one lock at a time.</p>
+  
+</article>
+
+<div class="hashmain">
+
+  <label for="input" ">Enter text to hash:</label>
+  <input type="text" id="input" class="ciphertext121" />
+  
+  <button onclick="hashInput()" class="ro13div1but">Hash Input</button>
+  <div class="hashingoutput">
+    MD5:<h4 id="output"></h4>
+    SHA256<h4 id="output1"></h4>
+    SHA512<h4 id="output2"></h4>
+  </div>
+    
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+      function hashInput() {
+        let input = document.getElementById("input").value;
+        let output = document.getElementById("output");
+        output.innerHTML = md5(input);
+
+        let input1 = document.getElementById("input").value;
+        let output1 = document.getElementById("output1");
+        output1.innerHTML = sha256(input);
+
+        let input2 = document.getElementById("input").value;
+        let output2 = document.getElementById("output2");
+        output2.innerHTML = sha512(input);
+      }
+       
+    
+      
+    </script>
+
+    
+</body>
+<script src="/../index.js"></script>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/../index.css">
+  <title>Document</title>
+  <script type="text/javascript">
+    function rot13e() {
+      var plaintext = document.getElementById("plaintext").value;
+      var ciphertext = "";
+      for (var i = 0; i < plaintext.length; i++) {
+        var c = plaintext.charCodeAt(i);
+        if (c >= 65 && c <= 90) { // uppercase
+          ciphertext += String.fromCharCode((c - 65 + 13) % 26 + 65);
+        } else if (c >= 97 && c <= 122) { // lowercase
+          ciphertext += String.fromCharCode((c - 97 + 13) % 26 + 97);
+        } else { // non-alphabetic characters
+          ciphertext += plaintext.charAt(i);
+        }
+      }
+      document.getElementById("ciphertext").value = ciphertext;
+    }
+
+    function rot13d() {
+      var ciphertext = document.getElementById("ciphertext1").value;
+      var plaintext = "";
+      for (var i = 0; i < ciphertext.length; i++) {
+        var c = ciphertext.charCodeAt(i);
+        if (c >= 65 && c <= 90) { // uppercase
+          plaintext += String.fromCharCode((c - 65 + 13) % 26 + 65);
+        } else if (c >= 97 && c <= 122) { // lowercase
+          plaintext += String.fromCharCode((c - 97 + 13) % 26 + 97);
+        } else { // non-alphabetic characters
+          plaintext += ciphertext.charAt(i);
+        }
+      }
+      document.getElementById("plaintext1").value = plaintext;
+    }
+  </script>
+</head>
+
+<body>
+  <!--HamBurger Icon-->
+  <div class="bars" id="nav-action">
+    <span class="bar"> </span>
+  </div>
+
+  <!--Navbar Links-->
+  <nav id="nav">
+    <ul>
+      <li class="shape-circle circle-one"><a href="/">Home</a></li>
+      <li class="shape-circle circle-two"><a href="/about/about.html">About</a></li>
+      <li class="shape-circle circle-three"><a href="/rot13/rot13.html">ROT13</a></li>
+      <li class="shape-circle circle-five">
+        <a href="/Hashing/Hashing.html">Hashing</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!--Main Body Content-->
+  <article class="containerenc">
+    <h1 style="color: #e9405794;">ROT13</h1>
+    <p class="taglinerot" style="color: #a3b6c6;">Simple yet effective: Keep your message hidden with ROT13!</p>
+  </article>
+  <div class="rot13main">
+    <div class="ro13div1">
+      <h3>ROT13 Encryption</h3>
+      <label for="plaintext">Enter plaintext:</label>
+      <input type="text" id="plaintext">
+      <br>
+      <button onclick="rot13e()" class="ro13div1but">Encrypt</button>
+      <br>
+      <label for="ciphertext">Ciphertext:</label>
+      <input type="text" id="ciphertext" readonly>
+    </div>
+
+    <div class="ro13div2">
+      <h3>ROT13 Decryption</h3>
+      <label for="ciphertext" id="rot13cardtext">Enter ciphertext:</label>
+      <input type="text" id="ciphertext1">
+      <br>
+      <button onclick="rot13d()" class="ro13div2but">Decrypt</button>
+      <br>
+      <label for="plaintext">Plaintext:</label>
+      <input type="text" id="plaintext1" readonly>
+    </div>
+  </div>
+</body>
+<script src="/../index.js"></script>
+
+</html>
